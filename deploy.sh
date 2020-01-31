@@ -4,7 +4,8 @@
 set -e
 
 printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
-
+cd docs && rm -rf * 
+cd ..
 cd _source
 # Build the project.
 hugo -t reveal-hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
@@ -13,7 +14,7 @@ hugo -t reveal-hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 mv public/* ../docs
 
 # Add changes to git.
-git add .
+git add -A
 
 # Commit changes.
 msg="rebuilding site $(date)"
